@@ -8,9 +8,9 @@ lupusec XT2+
 
 configuration.yaml 
 
-lupusec:
-  device: XT1|XT2+
-  username: YOUR_USERNAME
-  password: YOUR_PASSWORD
-  ip_address: YOUR_IP_ADDRESS
+lupusec: <br>
+  device: XT1|XT2+ <br>
+  username: YOUR_USERNAME <br>
+  password: YOUR_PASSWORD <br>
+  ip_address: YOUR_IP_ADDRESS <br>
 
