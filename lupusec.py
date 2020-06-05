@@ -26,7 +26,8 @@ class LupusecSystem(object):
     def doGet(self, url):
         self.client.request('GET', '/action' + url, headers=self.headers)
         res = self.client.getresponse()
-        charset = res.getheader("Content-Type").split("=")[1] #TODO replace with requestes module
+        charset = 'utf-8'
+        print(res.getheaders())#("Content-Type").split("=")[1] #TODO replace with requestes module
         return str(res.read(), charset)
 
 class XT2(LupusecSystem):
