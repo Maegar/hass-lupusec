@@ -60,8 +60,14 @@ class XT2(LupusecSystem):
     
     def doGet(self, url):
         jsData = super().doGet(url)
-        print(repr(jsData))
-        return json.loads(jsData)
+        print(repr(self.__clean_json(jsData)))
+        return json.loads(self.__clean_json(jsData))
+
+    def __clean_json(self, textdata):
+        textdata = textdata.replace("\t", "")
+        i = textdata.index('\n')
+        textdata = textdata[i+1:-2]
+        return textdata
 
 class XT1(LupusecSystem):
 
