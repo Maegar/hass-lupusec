@@ -5,6 +5,7 @@ import xt2_const as XT2_CONST
 import const as GENERAL
 import demjson
 import json
+import ssl
 
 class LupusecSystem(object):
 
@@ -13,7 +14,7 @@ class LupusecSystem(object):
             "Authorization": "Basic {}".format(b64encode(bytes(f"{username}:{password}", "utf-8")).decode("ascii")),
             "content-type": "application/x-www-form-urlencoded"
         }
-        self.client = HTTPSConnection(url)
+        self.client = HTTPSConnection(url, context = ssl._create_unverified_context())
         self.sensors = []
 
     def getDeviceList(self):
