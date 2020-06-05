@@ -26,7 +26,7 @@ class LupusecSystem(object):
     def doGet(self, url):
         self.client.request('GET', '/action' + url, headers=self.headers)
         res = self.client.getresponse()
-        charset = 'utf-8'
+        charset = res.getheader("Content-Type").split("=")[1]#'utf-8'
         #print(res.getheader("Content-Type").split("=")[1]) #TODO replace with requestes module
         return str(res.read(), charset)
 
@@ -64,10 +64,7 @@ class XT2(LupusecSystem):
         return json.loads(self.__clean_json(jsData))
 
     def __clean_json(self, textdata):
-        textdata = textdata.replace("\t", "")
-        i = textdata.index('\n')
-        textdata = textdata[i+1:-2]
-        return textdata
+        return textdata.replace('\t', '')
 
 class XT1(LupusecSystem):
 
@@ -99,7 +96,8 @@ class XT1(LupusecSystem):
         return self.doGet('/panelCondGet')
     
     def doGet(self, url):
-        jsData = self.__clean_json(super().doGet(url))
+        resp = super().doGet(url)
+        jsData = self.__clean_json(resp)
         return demjson.decode(jsData)
 
     def __clean_json(self, textdata):
