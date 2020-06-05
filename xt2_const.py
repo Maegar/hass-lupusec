@@ -1,0 +1,16 @@
+import const as GENERAL
+
+ACTION_SENSOR_LIST_GET = 'sensorListGet'
+ACTION_PANEL_CONDITION_GET = 'panelCondGet'
+
+MODES = {'ARM': GENERAL.Mode.ARM, 
+         'HOME': GENERAL.Mode.HOME, 
+         'DISARM': GENERAL.Mode.DISARM}
+
+STATUS = {r'{WEB_MSG_DC_CLOSE}': GENERAL.Status.CLOSED, 
+          r'{WEB_MSG_DC_OPEN}': GENERAL.Status.OPEN}
+
+TYPES = {4: GENERAL.Device.TYPE_WINDOW_SENSOR,
+         37: GENERAL.Device.TYPE_KEY_PAD,
+         23: GENERAL.Device.TYPE_SIRENE,
+         46: GENERAL.Device.TYPE_SIRENE,}
