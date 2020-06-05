@@ -27,7 +27,7 @@ class LupusecSystem(object):
         self.client.request('GET', '/action' + url, headers=self.headers)
         res = self.client.getresponse()
         charset = 'utf-8'
-        print(res.getheaders())#("Content-Type").split("=")[1] #TODO replace with requestes module
+        #print(res.getheader("Content-Type").split("=")[1]) #TODO replace with requestes module
         return str(res.read(), charset)
 
 class XT2(LupusecSystem):
@@ -60,7 +60,7 @@ class XT2(LupusecSystem):
     
     def doGet(self, url):
         jsData = super().doGet(url)
-        return json.load(jsData)
+        return json.loads(jsData)
 
 class XT1(LupusecSystem):
 
