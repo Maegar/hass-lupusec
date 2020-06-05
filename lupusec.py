@@ -60,6 +60,7 @@ class XT2(LupusecSystem):
     
     def doGet(self, url):
         jsData = super().doGet(url)
+        print(repr(jsData))
         return json.loads(jsData)
 
 class XT1(LupusecSystem):
