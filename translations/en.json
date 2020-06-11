@@ -1,0 +1,23 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Device have been already configured"
+        },
+        "error": {
+            "cannot_connect": "Connection parameters are invalid, cannot connect.",
+            "invalid_auth": "Check your credentials, authentication failed.",
+            "unknown": "Unknown error"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "Host",
+                    "password": "Password",
+                    "username": "Username",
+                    "devicetype": "Device Type"
+                }
+            }
+        }
+    },
+    "title": "Lupusec XTX"
+}

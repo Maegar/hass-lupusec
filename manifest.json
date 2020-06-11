@@ -1,0 +1,14 @@
+{
+  "domain": "lupusecxtx",
+  "name": "Lupusec XTX",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/lupusecxtx",
+  "requirements": [],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@mrflobow"
+  ]
+}
