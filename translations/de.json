@@ -16,7 +16,8 @@
                     "username": "Username",
                     "ssl_verify": "SSL verify"
                 },
-                "description": "Please enter the necessary data for the XT integration"
+                "description": "Konfigurationsdaten die für die XT integration benötigt werden",
+                "title": "Lupusec eXtended Integration"
             }
         }
     },

@@ -1,0 +1,10 @@
+Additionally 
+>> Alarm Panel per area >> switch modes
+>> List of all Sensors with detailed info (motion, door/window)
+>> Group for Battery (group.lupusec_battery)
+>> Group for Tamper (group.lupusec_tamper)
+>> Group for Switch (group.lupusec_switch)
+
+>> config split >> Connection >> CID port && action url web-hook (CID && action url auto insertion)
+
+>> Integration as HACS

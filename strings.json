@@ -1,14 +1,15 @@
 {
-  "title": "Lupusec XTX",
+  "title": "Lupusec eXtended Integration",
   "config": {
     "step": {
       "user": {
         "data": {
-          "host": "[%key:common::config_flow::data::host%]",
-          "username": "[%key:common::config_flow::data::username%]",
-          "password": "[%key:common::config_flow::data::password%]",
-          "devicetype": "Device Type"
-        }
+          "host": "Lupusec Alarm Panel URL",
+          "password": "Lupusec UI Password",
+          "username": "Lupusec UI Username",
+          "ssl_verify": "SSL verify"
+        },
+        "description": "Please enter the necessary data for the XT integration"
       }
     },
     "error": {

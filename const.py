@@ -1,3 +1,3 @@
-"""Constants for the Lupusec XTX integration."""
+"""Constants for the lupusecxt integration."""
 
-DOMAIN = "lupusecxtx"
+DOMAIN = "lupusecxt"

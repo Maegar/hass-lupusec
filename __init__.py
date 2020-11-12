@@ -1,29 +1,55 @@
-"""The Lupusec XTX integration."""
+"""The lupusecxt integration."""
 import asyncio
+import logging
 
 import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import CONF_NAME
 from homeassistant.core import HomeAssistant
+import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.entity import Entity
 
 from .const import DOMAIN
+from homeassistant.components.hass_lupusec.lupusecio import LupusecSystem
 
-CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
+_LOGGER = logging.getLogger(__name__)
 
-# TODO List the platforms that you want to support.
-# For your initial PR, limit it to 1 platform.
-PLATFORMS = ["light"]
+NOTIFICATION_ID = "lupusecxt_notification"
+NOTIFICATION_TITLE = "Lupusec Security Setup"
+
+
+
+CONFIG_SCHEMA = vol.Schema(
+    {
+        DOMAIN: vol.All(
+            cv.deprecated(CONF_NAME, invalidation_version="0.110"),
+            vol.Schema({vol.Optional(CONF_NAME, default=DOMAIN): cv.string}),
+        )
+    },
+    extra=vol.ALLOW_EXTRA,
+)
+
+
+PLATFORMS = ["alarm_control_panel", "switch"]
 
 
 async def async_setup(hass: HomeAssistant, config: dict):
-    """Set up the Lupusec XTX component."""
+    """Set up the lupusecxt component."""
+    hass.data[DOMAIN] = {}
+
+    if DOMAIN not in config:
+        return True
+
+    conf = config[DOMAIN]
     return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
-    """Set up Lupusec XTX from a config entry."""
-    # TODO Store an API object for your platforms to access
-    # hass.data[DOMAIN][entry.entry_id] = MyApi(...)
+    """Set up lupusecxt from a config entry."""
+    hass.data[DOMAIN][entry.entry_id] = LupusecSystem(
+        entry.data["username"], entry.data["password"], entry.data["host"], entry.data["ssl_verify"]
+    )
 
     for component in PLATFORMS:
         hass.async_create_task(
@@ -47,3 +73,18 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
         hass.data[DOMAIN].pop(entry.entry_id)
 
     return unload_ok
+
+
+class LupusecDevice(Entity):
+    """Representation of a Lupusec device."""
+
+    def __init__(self, data, device, area):
+        """Initialize a sensor for Lupusec device."""
+        self._data = data
+        self._device = device
+        self._area = area
+
+    @property
+    def should_poll(self):
+        """Return the name of the switch."""
+        return False
